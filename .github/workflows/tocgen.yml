@@ -1,0 +1,21 @@
+###################################################################################
+# ⚠️ This file is controlled by OpenTofu in the estate-repos repository.
+#    Manual changes will be **overwritten** within 24 hours.
+###################################################################################
+
+name: tocgen
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "**/*.md"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  call-tocgen:
+    uses: evoteum/estate-reusable-workflows/.github/workflows/tocgen.yml@main
+    secrets: inherit
