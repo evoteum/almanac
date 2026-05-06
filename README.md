@@ -51,6 +51,10 @@ This replaces manual, spreadsheet-driven pre-scaling with a GitOps-native, audit
 
 - [Install](#install)
 - [Usage](#usage)
+    - [Defining a Calendar](#defining-a-calendar)
+    - [Scaling Deployments](#scaling-deployments)
+    - [Checking status](#checking-status)
+    - [Suspending scaling](#suspending-scaling)
 - [Documentation](#documentation)
 - [Repository Configuration](#repository-configuration)
 - [Contributing](#contributing)
