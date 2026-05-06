@@ -1,0 +1,30 @@
+apiVersion: almanac.evoteum.com/v1
+kind: Calendar
+metadata:
+  labels:
+    app.kubernetes.io/name: almanac
+    app.kubernetes.io/managed-by: kustomize
+  name: cheltenham-festival
+spec:
+  # Absolute instances: use for events whose dates change each year.
+  # Each year's dates are declared explicitly; past instances are automatically
+  # pruned from the generated ScaledObjects once they expire.
+  instances:
+    - start: "2026-03-10T08:00:00Z"
+      end:   "2026-03-14T18:00:00Z"
+
+---
+apiVersion: almanac.evoteum.com/v1
+kind: Calendar
+metadata:
+  labels:
+    app.kubernetes.io/name: almanac
+    app.kubernetes.io/managed-by: kustomize
+  name: christmas
+spec:
+  # Recurring windows: use for fixed-date annual events.
+  # The cron expressions are passed directly to KEDA; KEDA manages activation.
+  recurring:
+    - start: "0 0 24 12 *"
+      end:   "0 0 27 12 *"
+      timezone: Europe/London

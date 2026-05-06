@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "almanac.fullname" . }}
+  labels:
+    {{- include "almanac.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [almanac.evoteum.com]
+    resources: [calendars, calendarscales]
+    verbs: [get, list, watch]
+  - apiGroups: [almanac.evoteum.com]
+    resources: [calendars/status]
+    verbs: [get]
+  - apiGroups: [almanac.evoteum.com]
+    resources: [calendarscales/status]
+    verbs: [get, patch, update]
+  - apiGroups: [apps]
+    resources: [deployments]
+    verbs: [get, list, watch]
+  - apiGroups: [keda.sh]
+    resources: [scaledobjects]
+    verbs: [create, delete, get, list, patch, update, watch]

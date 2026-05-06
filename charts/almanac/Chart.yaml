@@ -1,0 +1,21 @@
+apiVersion: v2
+name: almanac
+description: Calendar-driven autoscaling — define business events as Kubernetes resources, let almanac generate the scaling.
+type: application
+version: 0.1.0
+appVersion: "latest"
+keywords:
+  - autoscaling
+  - keda
+  - calendar
+  - scheduling
+sources:
+  - https://github.com/evoteum/almanac
+maintainers:
+  - name: evoteum
+    url: https://github.com/evoteum
+dependencies:
+  - name: keda
+    repository: https://kedacore.github.io/charts
+    version: "~2.19.0"
+    condition: keda.enabled

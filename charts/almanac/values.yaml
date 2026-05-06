@@ -1,0 +1,46 @@
+image:
+  repository: ghcr.io/evoteum/almanac
+  pullPolicy: IfNotPresent
+  # Defaults to Chart.AppVersion when blank.
+  tag: ""
+
+replicaCount: 1
+
+serviceAccount:
+  create: true
+  # Defaults to the fullname of the release when blank.
+  name: ""
+  annotations: {}
+
+# Enable for HA (replicaCount > 1). Requires leader-election RBAC (always
+# installed) and creates a Lease in the release namespace.
+leaderElection:
+  enabled: false
+
+# Pod-level security context (applied to all containers).
+podSecurityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
+# Container-level security context.
+containerSecurityContext:
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop: ["ALL"]
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 64Mi
+  limits:
+    memory: 128Mi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# KEDA sub-chart. Set enabled: false if KEDA is already installed in your cluster.
+keda:
+  enabled: true

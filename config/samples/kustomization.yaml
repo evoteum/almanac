@@ -1,0 +1,5 @@
+## Append samples of your project ##
+resources:
+- almanac_v1_calendar.yaml
+- almanac_v1_calendarscale.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples

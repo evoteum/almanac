@@ -1,0 +1,26 @@
+almanac {{ .Chart.AppVersion }} installed in namespace {{ .Release.Namespace }}.
+{{- if .Values.keda.enabled }}
+KEDA has been installed as a dependency.
+{{- else }}
+KEDA was not installed (keda.enabled=false). Ensure it is already running in your cluster.
+{{- end }}
+
+Verify the controller is running:
+  kubectl get pods -n {{ .Release.Namespace }}
+
+Apply a Calendar (cluster-scoped):
+  kubectl apply -f config/samples/almanac_v1_calendar.yaml
+
+Apply a CalendarScale (namespaced):
+  kubectl apply -f config/samples/almanac_v1_calendarscale.yaml
+
+Check status:
+  kubectl get calendarscale -A
+
+Upgrading CRDs: Helm does not upgrade CRDs automatically. After a CRD schema
+change, apply them manually before running helm upgrade:
+  kubectl apply -f charts/almanac/crds/
+{{- if not .Values.leaderElection.enabled }}
+
+Leader election is disabled. Set leaderElection.enabled=true for HA deployments.
+{{- end }}

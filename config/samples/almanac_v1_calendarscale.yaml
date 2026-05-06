@@ -1,0 +1,20 @@
+apiVersion: almanac.evoteum.com/v1
+kind: CalendarScale
+metadata:
+  labels:
+    app.kubernetes.io/name: almanac
+    app.kubernetes.io/managed-by: kustomize
+  name: cheltenham-festival
+  namespace: default
+spec:
+  # calendarName references a cluster-scoped Calendar resource.
+  calendarName: cheltenham-festival
+  # targets lists the Deployments to scale during active Calendar windows.
+  # Each target gets its own KEDA ScaledObject, owned by this CalendarScale.
+  # ScaledObjects are never committed to git — they are generated output.
+  targets:
+    - deploymentName: betting-api
+      replicas: 50
+    - deploymentName: odds-service
+      replicas: 30
+  # suspend: true  # uncomment to temporarily disable scaling without deleting
