@@ -47,8 +47,14 @@ Kubernetes operator that generates KEDA ScaledObjects from business calendar eve
 
 [//]: # (TOCGEN_TABLE_OF_CONTENTS_START)
 
-[//]: # (Set `tocgen: true` in estate-repos/repos.yaml to enable automatic table of contents management.)
-[//]: # (Or just do it manually like a weirdo, you do you...)
+- [Install](#install)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [Repository Configuration](#repository-configuration)
+- [Contributing](#contributing)
+- [License](#license)
+    - [Code](#code)
+    - [Non-code content](#non-code-content)
 
 [//]: # (TOCGEN_TABLE_OF_CONTENTS_END)
 
